@@ -12,7 +12,7 @@ function addParticipant(event){
         email
     };
 
-    fetch('https://corsproxy.io/?https://script.google.com/macros/s/AKfycbzQZu5lu3d448mccljpJSuJ05_CVs7GB0QSRA9fHCE/dev', {
+    fetch('https://script.google.com/macros/s/AKfycbyVvYSQyE8yFkp9LenCsCnkCnIT78UrTS-A8QstFCVtGBhzs5T-McWkPP6dg8gruMBN/exec', {
         method: "POST",
         body: JSON.stringify(payload),
         headers: {
