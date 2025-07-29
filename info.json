@@ -1,0 +1,19 @@
+{
+    "event":{
+        "name": "Margazhi 2025",
+        "locations": [
+            {
+                "venue": "Bharatiya Vidhya Bhavan",
+                "address": "30/1 Sundareswarar St, Mylapore",
+                "date":"Someday, December 22, 2025",
+                "time": "4:00 pm"
+            },
+            {
+                "venue": "Bharatiya Vidhya Bhavan",
+                "address": "30/1 Sundareswarar St, Mylapore",
+                "date":"Someday, December 22, 2025",
+                "time": "4:00 pm"
+            }
+        ]
+    }
+}
