@@ -205,6 +205,14 @@ button:hover{
     background-color:#DD7230;
     cursor: pointer;
 }
+#rsvp{
+    width: 90%;
+}
+#rsvp:hover{
+    color: #D98324;
+    cursor: pointer;
+    scale:1.1
+}
 .info{
     width: 60%;
 }
