@@ -34,6 +34,8 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
     // Perform an AJAX request to submit the form
     var xhr = new XMLHttpRequest();
     xhr.open("POST", form.action);
+    let name = document.getElementById("rsvpname").value;
+    let guests = document.getElementById("rsvpguests").value;
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
@@ -45,4 +47,7 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
       }
     };
     xhr.send(new FormData(form));
+    document.getElementById("attending").innerHTML = `
+            <p class="info palanquin-regular">${name} has RSVPed ${guests} guests!</p>
+        `;
 });
