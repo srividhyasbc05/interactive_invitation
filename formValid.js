@@ -26,7 +26,7 @@ function addParticipant(event){
         `;
         })
 } */
-document.getElementById("rsvp").addEventListener("click", function(event) {
+document.getElementById("RSVP").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission
 
     const form = document.getElementById("RSVP");
