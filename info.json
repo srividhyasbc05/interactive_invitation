@@ -3,12 +3,72 @@
         "name": "Margazhi 2025",
         "locations": [
             {
+                "name":"Margazhi Utsavam",
                 "venue": "Bharatiya Vidhya Bhavan",
                 "address": "30/1 Sundareswarar St, Mylapore",
                 "date":"Someday, December 22, 2025",
-                "time": "4:00 pm"
+                "time": "4:00 pm",
+                "cover":"galleryimages copy/vertical/EA2A5447 Large.jpeg",
+                "pieces": [
+                            {
+                                "number":"1",
+                                "title": "Pushpanjali",
+                                "ragam": "",
+                                "talam": "",
+                                "composer": "",
+                                "choreographer": "Sri A. Lakshmanaswamy",
+                                "image": "galleryimages copy/vertical/EA2A5447 Large.jpeg",
+                                "desc":"Pushpanjali is a Sanskrit term meaning offering of flowers. It's a gesture of respect and reverence, often performed in Hindu religious ceremonies, where flowers are offered to deities or revered individuals with folded hands. The word is a combination of 'pushpa' (flower) and 'anjali' (offering with folded hands)."
+                            },
+                            {
+                                "number":"2",
+                                "title": "Paahi Maam",
+                                "ragam": "Janaranjini",
+                                "talam": "Adi",
+                                "composer": "Sri Mahavaidyanada Iyer",
+                                "choreographer": "Sri A. Lakshmanaswamy",
+                                "image": "galleryimages copy/vertical/EA2A5443 Large.jpeg"
+                            },
+                            {
+                                "number":"3",
+                                "title": "Varnam: Immun En Manam",
+                                "ragam": "Charukesi",
+                                "talam": "Adi",
+                                "composer": "Lalgudi G. Jayaraman",
+                                "choreographer": "Sri A. Lakshmanaswamy",
+                                "image": "galleryimages copy/vertical/EA2A5472 Large.jpeg"
+                            },
+                            {
+                                "number":"4",
+                                "title": "Aduvum Solluval",
+                                "ragam": "Saurastram",
+                                "talam": "Adi",
+                                "composer": "Sri Subbaraama Iyer",
+                                "choreographer": "Sri A. Lakshmanaswamy",
+                                "image": "galleryimages copy/vertical/EA2A5655 Large.jpeg"
+                            },
+                            {
+                                "number":"5",
+                                "title": "Jagadhodarana",
+                                "ragam": "Kapi",
+                                "talam": "Adi",
+                                "composer": "Sri Purandara Dasa",
+                                "choreographer": "Sri A. Lakshmanaswamy",
+                                "image": "galleryimages copy/vertical/EA2A5675 Large.jpeg"
+                            },
+    {
+                                "number":"6",
+                                "title": "Thillana",
+                                "ragam": "Hindolam",
+                                "talam": "Adi",
+                                "composer": "Sri KN Dandayudapani Pillai",
+                                "choreographer": "Sri A. Lakshmanaswamy",
+                                "image": "galleryimages copy/vertical/EA2A5623 Large.jpeg"
+                            }
+                        ]
             },
             {
+                "name":"Margazhi Utsavam",
                 "venue": "Bharatiya Vidhya Bhavan",
                 "address": "30/1 Sundareswarar St, Mylapore",
                 "date":"Someday, December 22, 2025",
@@ -16,4 +76,5 @@
             }
         ]
     }
+    
 }

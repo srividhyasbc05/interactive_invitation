@@ -29,22 +29,20 @@ function addParticipant(event){
 document.getElementById("rsvp").addEventListener("click", function(event) {
     event.preventDefault(); // Prevent the default form submission
 
+    const form = document.getElementById("RSVP");
 
     // Perform an AJAX request to submit the form
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", this.action);
+    xhr.open("POST", form.action);
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          // Successful response
-          var response = xhr.responseText;
-          console.log(response)
-          document.getElementById("myForm").reset(); //Clear the form fields
+          console.log(xhr.responseText);
+          form.reset(); // Clear the form fields
         } else {
-          // Error response
-          console.log(response)
+          console.error("Error submitting form:", xhr.statusText);
         }
       }
     };
-    xhr.send(new FormData(this));
-  });
+    xhr.send(new FormData(form));
+});
