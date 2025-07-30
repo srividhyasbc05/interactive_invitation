@@ -1,6 +1,6 @@
 let submitBtn= document.getElementById("rsvp")
 
-submitBtn.addEventListener("click", addParticipant)
+/*submitBtn.addEventListener("click", addParticipant)
 function addParticipant(event){
     let name = document.getElementById("rsvpname").value;
     let guests = document.getElementById("rsvpguests").value;
@@ -25,4 +25,26 @@ function addParticipant(event){
             <p class="info palanquin-regular">${name} has RSVPed ${guests} guests!</p>
         `;
         })
-}
+} */
+document.getElementById("RSVP").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+
+    // Perform an AJAX request to submit the form
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", this.action);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          // Successful response
+          var response = xhr.responseText;
+          console.log(response)
+          document.getElementById("myForm").reset(); //Clear the form fields
+        } else {
+          // Error response
+          console.log(response)
+        }
+      }
+    };
+    xhr.send(new FormData(this));
+  });
