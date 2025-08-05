@@ -51,7 +51,7 @@ const validateForm =()=> {
   let containsErrors = false;
 
   var rsvpInputs = document.getElementById("RSVP").elements;
-  Array.from(rsvpInputs).forEach(input , ()=>{
+  Array.from(rsvpInputs).forEach((input) => {
     if (input.length<2){
       containsErrors=true
       input.classList.add("error")
@@ -59,17 +59,17 @@ const validateForm =()=> {
       input.classList.remove("error")
     }
   })
-  if(Guest.email.value.includes('@')){
+  if(rsvpInputs[1].value.includes('@')){
     containsErrors = false;
-    Guest.email.classList.add("error")
+    rsvpInputs[1].classList.add("error")
   }else{
-      Guest.email.classList.remove("error")
+      rsvpInputs[1].classList.remove("error")
     }
-  if(Guest.email.includes('.com')){
+  if(rsvpInputs[1].includes('.com')){
     containsErrors = false;
-    Guest.email.classList.add("error")
+    rsvpInputs[1].classList.add("error")
   }else{
-      Guest.email.classList.remove("error")
+      rsvpInputs[1].classList.remove("error")
     }
   if(containsErrors==false){
           addParticipant(Guest)
