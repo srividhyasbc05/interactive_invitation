@@ -14,13 +14,32 @@
   <body>
     <header class="sari">
         <button id="darkMode">Dark Mode</button>
-         <h1> Srividhya C. Performance</h1>
+         <h1> Srividhya C. Dance</h1>
         <nav class="palanquin-dark-regular">
-            <a href="#mainInfo">Invitation</a>
-            <a href="#piecesContainer">Pieces</a>
-            <a href="#bios">Bio</a>
-            <a href="#RSVP">RSVP</a>
-            <a href="#Guestbook">Guestbook</a>
+            <div id="navbar">
+                <ul>
+                <li>
+                    <a href="#mainInfo">Invitation</a>
+                </li>
+                <li>
+                    <a href="#piecesContainer">Pieces</a>
+                </li>
+                <li>
+                    <a href="#bios">Bio</a>
+                </li>
+                <li>
+                    <a href="#RSVP">RSVP</a>
+                </li>
+                <li>
+                    <a href="#Guestbook">Guestbook</a>
+                </li>
+            </ul>
+            </div>
+            <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+            </div>
         </nav>
        
         
@@ -29,46 +48,54 @@
         <img src="galleryimages copy/horizontal/EA2A5525 Large.jpeg">
     </div>
     <main>
+        <div id="success-modal" class="modal">
+            <div class="modal-container">
+                <div id="modal-text">
+                    <p class="palanquin-dark-regular"> </p>
+                </div>
+                <div id="modal-img">
+                   <img src="galleryimages copy/horizontal/EA2A5516 Large.jpeg">
+                </div>
+            </div>
+        </div>
+
         <div id="mainInfo" class="yellowbg">
             <div class="sariborder">
                 <div id="event">
-                    <h1>NrityaMalika</h1>
+
                 </div>
                  <br>
                 <div class="infocontainer" id="performances">
-                    <div class="performance">
-                        <div class="address">
-                    <h3> Rasika Ranjini Sabha</h3>
-                    <p>30/1 Sundareswarar St, Mylapore</p>
+                    
                 </div>
                 <div class="dateTime">
-                    <h4>
-                        Sunday, July 21, 2024
-                    </h4>
-                    <h4> @ 4:00 pm</h4>
+                    
                 </div>
-                    </div>
-            </div>
             <br>
-            <div class="infocontainer">
+            <div class="infocontainer2">
                 <div id="desc">
                     <h3>Performed by Kum. Srividhya Chandramouleeswaran
                         <br>
                         Disciple of Acharya Choodamani A. Lakshmanaswamy
                     </h3>
                 </div>
-                
+                <br>
                 <div>
                     <div id="socials">
+                        <img src="instagram.PNG">
                         <a href='https://www.instagram.com/srividhyadances' target="_blank"><h5> @srividhyadances</h5> </a>
                     </div>
                     <br>
                     <div id="invitebtns">
-                        <button>Invitation</button>
-                        <button>Brochure</button>
+                        <button>
+                            <img src="download.svg">
+                            Invitation</button>
+                        <button>
+                            <img src="download.svg">
+                            Brochure</button>
                     </div>
                 </div>
-                </div>
+            </div>
             </div>
         </div>
         <div id="piecesContainer" class="pinkbg">
@@ -93,7 +120,7 @@
         </div>
         <div id="bios" class="yellowbg">
             <div class="sariborder">
-                <div id="mybio" class="infocontainer">
+                <div class="bioinfocontainer">
                     <div class="bioImgContainer">
                         <img src="galleryimages copy/vertical/EA2A5617 Large.jpeg">
                     </div>
@@ -110,12 +137,16 @@
                         </p>
                     </div>
                 </div>
-                <div id="mybio" class="infocontainer">
+                <div class="bioinfocontainer">
                     <div class="bio">
                         <h3>About my Guru</h3>
                         <p>
-                            
-
+                            Shri A. Lakshmanaswamy started his dancing career with initial training from Smt. Meera Venugopal of Bharata Kalanjali, Malaysia. 
+                            At Chennai, he was guided by Smt. K.J. Sarasa, Prof. C. V. Chandrasekar and Smt. Kalanidhi Narayanan - all doyens in the art of Bharatanatyam.
+                            Guru Lakshmanaswamy has performed in all the prestigious Sabhas in Chennai and at numerous dance festivals in India and overseas. 
+                            He has been acclaimed as the best male Bharatanatyam dancer by many Natyacharyas in the field and the media.
+                            Guru Lakshmanaswamy has received many prestigious awards like the Acharaya Chudamani from Shri Krishna Gana Sabha, Madura Kalamani from Karthik Fine Arts, Bharatha Kala Rathna, Yuva Kala Bharati, Natanamani, Swayam Prakasha Narthaka, Sathya Acharya Sundaram and Acharya Kala Vipanchi and many more. 
+                            He was also bestowed the Narthaka award by Natyanjali trust and dance guru award at the 27th annual "spirit of youth festival" held at the Music Academy in August 2015. A performer par excellence, Guru Lakshmanaswamy's passion for the art form and his endeavour to teach has given his Sishyas a deep sense of respect, thus molding them into better dancers.
                         </p>
                     </div>
                     <div class="bioImgContainer">
@@ -141,11 +172,11 @@
                             </div>
                         </div>
                         <form  id="RSVP" action="https://script.google.com/macros/s/AKfycbyVvYSQyE8yFkp9LenCsCnkCnIT78UrTS-A8QstFCVtGBhzs5T-McWkPP6dg8gruMBN/exec" method="post">
-                        <input  class="palanquin-dark-regular" type="text" id="rsvpname" name="name" placeholder="Name">
+                        <input  class="palanquin-dark-regular " type="text" id="rsvpname" name="name" placeholder="Name">
                         <input  class="palanquin-dark-regular" type="number" id="rsvpguests" name="guests" placeholder="Number of Guests">
                         <input  class="palanquin-dark-regular" type="email" id="rsvpemail" name="email" placeholder="Email">
 
-                         <input  id="rsvp" type="submit" class="palanquin-dark-regular"></input>
+                        <input  id="rsvp" type="submit" class="palanquin-dark-regular"></input>
                         </form>
                         
                        
@@ -158,10 +189,12 @@
                 <div class=" sariborderpink">
                     <div class="firstHalfForm" id="Guestbook">
                         <h1>GUESTBOOK</h1>
-                        <form>
+                        <form id="guestbook" action="https://script.google.com/macros/s/AKfycbyVvYSQyE8yFkp9LenCsCnkCnIT78UrTS-A8QstFCVtGBhzs5T-McWkPP6dg8gruMBN/exec" method="post">
                             <input  class="palanquin-dark-regular" type="text" id="guestname" name="name" placeholder="Name">
                         <input  class="palanquin-dark-regular" type="email" id="guestemail" name="email" placeholder="Email">
-                        <textarea class= 'palanquin-regular' placeholder="Leave a note about the performance!"></textarea> 
+                        <textarea class= 'palanquin-regular' name="msg" placeholder="Leave a note about the performance!"></textarea> 
+                        <br>
+                        <input  id="sig" type="submit" class="palanquin-dark-regular"></input>
                         </form>
                         
                     </div>
@@ -174,5 +207,6 @@
     <script src="darkMode.js"></script>
     <script src="formValid.js"></script>
     <script src="populateinfo.js"></script>
+    <script src="nav.js"></script>
   </body>
 </html>

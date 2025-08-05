@@ -1,31 +1,5 @@
 let submitBtn= document.getElementById("rsvp")
 
-/*submitBtn.addEventListener("click", addParticipant)
-function addParticipant(event){
-    let name = document.getElementById("rsvpname").value;
-    let guests = document.getElementById("rsvpguests").value;
-    let email = document.getElementById("rsvpemail").value;
-
-    let payload = {
-        name,
-        guests,
-        email
-    };
-
-    fetch('https://script.google.com/macros/s/AKfycbyVvYSQyE8yFkp9LenCsCnkCnIT78UrTS-A8QstFCVtGBhzs5T-McWkPP6dg8gruMBN/exec', {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers: {
-        "Content-Type": "application/json"
-        }
-    })
-        .then(res => res.json())
-        .then(() => {
-        document.getElementById("attending").innerHTML = `
-            <p class="info palanquin-regular">${name} has RSVPed ${guests} guests!</p>
-        `;
-        })
-} */
 document.getElementById("RSVP").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission
 
@@ -47,7 +21,81 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
       }
     };
     xhr.send(new FormData(form));
-    document.getElementById("attending").innerHTML = `
-            <p class="info palanquin-regular">${name} has RSVPed ${guests} guests!</p>
-        `;
+    validateForm;
+    
 });
+const addParticipant=(person)=>{
+  document.getElementById("attending").innerHTML = `
+            <p class="info palanquin-regular">${person.name} has RSVPed ${Guest.numGuests} guests!</p>
+        `;
+}
+const Guest={
+  name: document.getElementById('rsvpname').value, 
+  numGuests:document.getElementById('rsvpguests').value , 
+  email: document.getElementById('rsvpemail').value
+}
+const toggleModal = (person) => {
+
+    let modal = document.getElementById('success-modal');
+    let text=document.getElementById('modal-text') 
+    modal.style.display = "flex";
+    text.innerHTML=`<p class="palanquin-dark-regular"> ${person.name}, Thank you so much for RSVP-ing! I look forward to seeing you at the event!  </p>`
+    setTimeout(() => {
+    modal.style.display = "none";
+}, 5000);
+
+}
+const validateForm =()=> {
+
+  let containsErrors = false;
+
+  var rsvpInputs = document.getElementById("RSVP").elements;
+  rsvpInputs.forEach(input , ()=>{
+    if (input.length<2){
+      containsErrors=true
+      input.classList.add("error")
+    }else{
+      input.classList.remove("error")
+    }
+  })
+  if(Guest.email.value.includes('@')){
+    containsErrors = true;
+    Guest.email.classList.add("error")
+  }else{
+      Guest.email.classList.remove("error")
+    }
+  if(Guest.email.includes('.com')){
+    containsErrors = true;
+    Guest.email.classList.add("error")
+  }else{
+      Guest.email.classList.remove("error")
+    }
+  if(containsErrors==false){
+          addParticipant(Guest)
+          toggleModal(Guest)
+    }
+}
+document.getElementById("guestbook").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const form = document.getElementById("guestbook")
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", form.action);
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                console.log(xhr.responseText);
+                form.reset();
+                // Optionally update the UI with a thank-you message
+                alert(`Your note has been submitted. Thank you!`);
+            } else {
+                console.error("Error submitting guestbook:", xhr.statusText);
+                alert(`There was an error in your submission!`);
+            }
+        }
+    };
+
+    xhr.send(new FormData(form));
+})
