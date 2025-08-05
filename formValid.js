@@ -51,28 +51,21 @@ const validateForm = (Guest) => {
 
     const rsvpInputs = document.getElementById("RSVP").elements;
     Array.from(rsvpInputs).forEach((input) => {
-        if (input.value.length < 1) {
-            containsErrors = true;
-            input.classList.add("error");
-        } else {
-            input.classList.remove("error");
-        }
-    });
+    const id = input.id;
 
-    const emailField = document.getElementById('rsvpemail');
-    if (!Guest.email.includes('@') || !Guest.email.includes('.')) {
+    if (id === "rsvpname" && input.value.trim().length < 2) {
         containsErrors = true;
-        emailField.classList.add("error");
-    } else {
-        emailField.classList.remove("error");
-    }
-    const Gname = document.getElementById('rsvpname');
-    if (Guest.name.length < 2){
+        input.classList.add("error");
+    } else if (id === "rsvpemail" && (!input.value.includes('@') || !input.value.includes('.'))) {
         containsErrors = true;
-        Gname.classList.add("error");
+        input.classList.add("error");
+    } else if (id === "rsvpguests" && (isNaN(input.value) || parseInt(input.value) < 1)) {
+        containsErrors = true;
+        input.classList.add("error");
     } else {
-        Gname.classList.remove("error");
-    }
+        input.classList.remove("error");
+    }   
+    });
 
     return !containsErrors;
 };
