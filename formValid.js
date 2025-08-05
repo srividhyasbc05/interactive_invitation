@@ -51,7 +51,7 @@ const validateForm =()=> {
   let containsErrors = false;
 
   var rsvpInputs = document.getElementById("RSVP").elements;
-  Array.from(rsvpInputs).forEach.forEach(input , ()=>{
+  Array.from(rsvpInputs).forEach(input , ()=>{
     if (input.length<2){
       containsErrors=true
       input.classList.add("error")
