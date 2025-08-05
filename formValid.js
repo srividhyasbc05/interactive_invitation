@@ -43,9 +43,9 @@ const toggleModal = (person) => {
     text.innerText = `${person.name}, Thank you so much for RSVP-ing! I look forward to seeing you at the event!`;
 
     const img = document.getElementById("modal-img");
-    img.classList.remove("show");
-    void img.offsetWidth; 
-    img.classList.add("show");
+      img.classList.remove("show");
+      void img.offsetWidth; 
+      img.classList.add("show");
 
     setTimeout(() => {
         modal.style.display = "none";
