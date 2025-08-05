@@ -4,7 +4,11 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
     event.preventDefault(); // Prevent the default form submission
 
     const form = document.getElementById("RSVP");
-
+    const Guest={
+    name: document.getElementById('rsvpname').value, 
+    numGuests:document.getElementById('rsvpguests').value , 
+    email: document.getElementById('rsvpemail').value
+    }
     // Perform an AJAX request to submit the form
     var xhr = new XMLHttpRequest();
     xhr.open("POST", form.action);
@@ -14,6 +18,7 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           console.log(xhr.responseText);
+          validateForm();
           form.reset(); // Clear the form fields
         } else {
           console.error("Error submitting form:", xhr.statusText);
@@ -21,19 +26,15 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
       }
     };
     xhr.send(new FormData(form));
-    validateForm;
+    
     
 });
 const addParticipant=(person)=>{
   document.getElementById("attending").innerHTML = `
-            <p class="info palanquin-regular">${person.name} has RSVPed ${Guest.numGuests} guests!</p>
+            <p class="info palanquin-regular">${person.name} has RSVPed ${person.numGuests} guests!</p>
         `;
 }
-const Guest={
-  name: document.getElementById('rsvpname').value, 
-  numGuests:document.getElementById('rsvpguests').value , 
-  email: document.getElementById('rsvpemail').value
-}
+
 const toggleModal = (person) => {
 
     let modal = document.getElementById('success-modal');
@@ -50,7 +51,7 @@ const validateForm =()=> {
   let containsErrors = false;
 
   var rsvpInputs = document.getElementById("RSVP").elements;
-  rsvpInputs.forEach(input , ()=>{
+  Array.from(rsvpInputs).forEach.forEach(input , ()=>{
     if (input.length<2){
       containsErrors=true
       input.classList.add("error")
@@ -59,13 +60,13 @@ const validateForm =()=> {
     }
   })
   if(Guest.email.value.includes('@')){
-    containsErrors = true;
+    containsErrors = false;
     Guest.email.classList.add("error")
   }else{
       Guest.email.classList.remove("error")
     }
   if(Guest.email.includes('.com')){
-    containsErrors = true;
+    containsErrors = false;
     Guest.email.classList.add("error")
   }else{
       Guest.email.classList.remove("error")
