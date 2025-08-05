@@ -8,10 +8,8 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
         email: document.getElementById('rsvpemail').value
     };
 
-    // Validate before submitting
     if (!validateForm(Guest)) return;
 
-    // Perform an AJAX request to submit the form
     const xhr = new XMLHttpRequest();
     xhr.open("POST", form.action);
 
@@ -53,7 +51,7 @@ const validateForm = (Guest) => {
 
     const rsvpInputs = document.getElementById("RSVP").elements;
     Array.from(rsvpInputs).forEach((input) => {
-        if (input.value.length < 2) {
+        if (input.value.length < 1) {
             containsErrors = true;
             input.classList.add("error");
         } else {
@@ -68,11 +66,17 @@ const validateForm = (Guest) => {
     } else {
         emailField.classList.remove("error");
     }
+    const Gname = document.getElementById('rsvpname');
+    if (Guest.name.length < 2){
+        containsErrors = true;
+        Gname.classList.add("error");
+    } else {
+        Gname.classList.remove("error");
+    }
 
     return !containsErrors;
 };
 
-// Guestbook form handling
 document.getElementById("guestbook").addEventListener("submit", function(event) {
     event.preventDefault();
 
