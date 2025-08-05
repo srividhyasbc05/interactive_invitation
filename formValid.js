@@ -18,7 +18,7 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
             if (xhr.status === 200) {
                 console.log(xhr.responseText);
                 addParticipant(Guest);
-                toggleModal(Guest);
+                toggleModal(Guest, `${person.name}, Thank you so much for RSVP-ing! I look forward to seeing you at the event!`);
                 updateGuestCount();
                 form.reset();
             } else {
@@ -36,11 +36,11 @@ const addParticipant = (person) => {
     `;
 };
 
-const toggleModal = (person) => {
+const toggleModal = (person, msg) => {
     let modal = document.getElementById('success-modal');
     let text = document.querySelector('#modal-text p');
     modal.style.display = "flex";
-    text.innerText = `${person.name}, Thank you so much for RSVP-ing! I look forward to seeing you at the event!`;
+    text.innerText = msg;
 
     const img = document.getElementById("modal-img");
       img.classList.remove("show");
@@ -51,6 +51,7 @@ const toggleModal = (person) => {
         modal.style.display = "none";
     }, 5000);
 };
+
 
 const validateForm = (Guest) => {
     let containsErrors = false;
@@ -89,7 +90,11 @@ const updateGuestCount = () => {
 
 document.getElementById("guestbook").addEventListener("submit", function(event) {
     event.preventDefault();
-
+    const Guest = {
+        name: document.getElementById('guestname').value, 
+        email: document.getElementById('guestemail').value,
+        msg: document.getElementById('guestmsg').value,
+    };
     const form = document.getElementById("guestbook");
 
     const xhr = new XMLHttpRequest();
@@ -99,8 +104,8 @@ document.getElementById("guestbook").addEventListener("submit", function(event) 
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
                 console.log(xhr.responseText);
+                toggleModal(Guest, `${Guest.name}, thank you so much for coming and supporting me on my artistic journey!`)
                 form.reset();
-                alert(`Your note has been submitted. Thank you!`);
             } else {
                 console.error("Error submitting guestbook:", xhr.statusText);
                 alert(`There was an error in your submission!`);
