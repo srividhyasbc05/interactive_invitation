@@ -53,7 +53,7 @@ const validateForm = (Guest) => {
     Array.from(rsvpInputs).forEach((input) => {
     const id = input.id;
 
-    if (id === "rsvpname" && input.value.trim().length < 2) {
+    if (id === "rsvpname" && input.value.trim().length < 3) {
         containsErrors = true;
         input.classList.add("error");
     } else if (id === "rsvpemail" && (!input.value.includes('@') || !input.value.includes('.'))) {
