@@ -19,6 +19,7 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
                 console.log(xhr.responseText);
                 addParticipant(Guest);
                 toggleModal(Guest);
+                updateGuestCount();
                 form.reset();
             } else {
                 console.error("Error submitting form:", xhr.statusText);
@@ -41,6 +42,11 @@ const toggleModal = (person) => {
     modal.style.display = "flex";
     text.innerText = `${person.name}, Thank you so much for RSVP-ing! I look forward to seeing you at the event!`;
 
+    const img = document.getElementById("modal-img");
+    img.classList.remove("show");
+    void img.offsetWidth; 
+    img.classList.add("show");
+
     setTimeout(() => {
         modal.style.display = "none";
     }, 5000);
@@ -53,7 +59,7 @@ const validateForm = (Guest) => {
     Array.from(rsvpInputs).forEach((input) => {
     const id = input.id;
 
-    if (id === "rsvpname" && input.value.trim().length < 3) {
+    if (id === "rsvpname" && input.value.trim().length < 2) {
         containsErrors = true;
         input.classList.add("error");
     } else if (id === "rsvpemail" && (!input.value.includes('@') || !input.value.includes('.'))) {
@@ -68,6 +74,17 @@ const validateForm = (Guest) => {
     });
 
     return !containsErrors;
+};
+
+const updateGuestCount = () => {
+    fetch('https://script.google.com/macros/s/AKfycbyVvYSQyE8yFkp9LenCsCnkCnIT78UrTS-A8QstFCVtGBhzs5T-McWkPP6dg8gruMBN/exec')
+        .then(res => res.json())
+        .then(data => {
+            const totalGuests = data.totalGuests || 0;
+            const counter = document.getElementById("guest-count");
+            counter.innerText = `Total guests attending: ${totalGuests}`;
+        })
+        .catch(err => console.error("Failed to fetch guest count:", err));
 };
 
 document.getElementById("guestbook").addEventListener("submit", function(event) {
@@ -93,3 +110,4 @@ document.getElementById("guestbook").addEventListener("submit", function(event) 
 
     xhr.send(new FormData(form));
 });
+updateGuestCount();
