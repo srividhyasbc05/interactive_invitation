@@ -18,7 +18,7 @@ document.getElementById("RSVP").addEventListener("submit", function(event) {
             if (xhr.status === 200) {
                 console.log(xhr.responseText);
                 addParticipant(Guest);
-                toggleModal(Guest, `${person.name}, Thank you so much for RSVP-ing! I look forward to seeing you at the event!`);
+                toggleModal(Guest, `${Guest.name}, Thank you so much for RSVP-ing! I look forward to seeing you at the event!`);
                 updateGuestCount();
                 form.reset();
             } else {
@@ -95,6 +95,7 @@ document.getElementById("guestbook").addEventListener("submit", function(event) 
         email: document.getElementById('guestemail').value,
         msg: document.getElementById('guestmsg').value,
     };
+    if (!validateGuestbookForm(Guest)) return;
     const form = document.getElementById("guestbook");
 
     const xhr = new XMLHttpRequest();
@@ -116,3 +117,26 @@ document.getElementById("guestbook").addEventListener("submit", function(event) 
     xhr.send(new FormData(form));
 });
 updateGuestCount();
+const validateGuestbookForm = (Guest) => {
+    let containsErrors = false;
+
+    const guestInputs = document.getElementById("guestbook").elements;
+    Array.from(guestInputs).forEach((input) => {
+    const id = input.id;
+
+    if (id === "guestname" && input.value.trim().length < 2) {
+        containsErrors = true;
+        input.classList.add("error");
+    } else if (id === "guestemail" && (!input.value.includes('@') || !input.value.includes('.'))) {
+        containsErrors = true;
+        input.classList.add("error");
+    } else if (id === "guestmsg" && input.value.trim().length < 3) {
+        containsErrors = true;
+        input.classList.add("error");
+    } else {
+        input.classList.remove("error");
+    }   
+    });
+
+    return !containsErrors;
+};
